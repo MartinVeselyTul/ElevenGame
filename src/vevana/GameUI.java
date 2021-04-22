@@ -32,12 +32,7 @@ public class GameUI {
             }
             System.out.println(game.playAndReplace(cards));
             System.out.println(cards.toString());
-            System.out.println(game.anotherPlayIsPossible());
-            System.out.println(!game.isWon());
-
-            for (int j = 0; j < game.nCards() - 1; j++) {
-                System.out.println(game.getCardDescriptionAt(j) + " na indexu " + j);
-            }
+            
         } while (game.anotherPlayIsPossible() && !game.isWon());
     }
 }
