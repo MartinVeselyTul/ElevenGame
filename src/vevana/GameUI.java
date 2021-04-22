@@ -21,9 +21,9 @@ public class GameUI {
             }
 
             System.out.println("Vyberte karty");
-            System.out.println("Součet 11, nebo karty J Q K");
+            System.out.println("Dvě se součtem 11, nebo tři s hodnotami karty J Q K");
             List<Integer> cards = new ArrayList<>();
-            int n = 0;
+            int n;
             int i = 0;
 
             while ((n = sc.nextInt()) >= 0 && i < 3) {
