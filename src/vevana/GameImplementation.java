@@ -67,7 +67,6 @@ public class GameImplementation implements GameInterface {
             if (triplet >= 3){
                 for (int i = 0; i < triplet; i++) {                    
                     if(table.contains(DataStore.getTriple())){
-                        System.out.println("JQK true");
                         return true;
                     }
                 }
@@ -103,12 +102,10 @@ public class GameImplementation implements GameInterface {
                       table.remove(num2);
                       int n2 = Random(deck.size());
                       table.add(num2 ,deck.remove(n2));
-                    
-                    return true;
                 }
-                break;
-            case 3: 
-                System.out.println("Case3");
+                      return true;                
+                
+            case 3:                 
                 String[] choosenCards = new String[3];
                 for (int i = 0; i < 3; i++) {
                     int n = iSelectedCards.get(i);
@@ -120,20 +117,19 @@ public class GameImplementation implements GameInterface {
                 Collections.addAll(store, DataStore.getTriple());
                 
                 if (store.containsAll(myCards)) {                    
-                    for (int i = 0; i <= 2; i++) {
-                        System.out.println("Proslo JQK");
+                    for (int i = 0; i <= 2; i++) {                        
                         int n = iSelectedCards.get(i);
                         table.remove(n);
                         int nRand = Random(deck.size());
                         table.add(n ,deck.remove(nRand));                        
                     }
-                    return true;
+                    
                 }
-                break;
+                return true;
             default:
                 return false;
         }
-        return false;
+        //return false;
     }
 
     @Override
