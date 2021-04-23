@@ -25,7 +25,7 @@ public class GameImplementation implements GameInterface {
             }
         }
         Collections.shuffle(deck);
-        for (int i = 0; i < nCards() - 1; i++) {
+        for (int i = 0; i < nCards(); i++) {
             table.add(deck.remove(i));
         }
     }
@@ -56,6 +56,7 @@ public class GameImplementation implements GameInterface {
             int triplet = 0;
             double sum = 0;
             int n = table.size();
+            
             for (int i = 0; i < n; i++) {
                 if (table.get(i).getPoint() == 0) {
                     triplet++;
@@ -63,13 +64,30 @@ public class GameImplementation implements GameInterface {
                     sum += table.get(i).getPoint();
                 }
             }
-
-            if (sum / n >= 11 && triplet >= 3) {
-                return true;
+            if (triplet >= 3){
+                for (int i = 0; i < triplet; i++) {                    
+                    if(table.contains(DataStore.getTriple())){
+                        System.out.println("JQK true");
+                        return true;
+                    }
+                }
             }
+            for (int i = 0; i < n; i++) {
+                for (int j = n-1; j >= 0; j--) {
+                    if(table.get(i).getPoint() + table.get(j).getPoint() == 11){
+                        System.out.println("soucet 11 true");
+                        return true;
+                    }
+                }
+            }
+            
+//            if (sum / n >= 11 && triplet >= 3) {
+//                return true;
+//            }
         }
         return false;
     }
+
 
     @Override
     public boolean playAndReplace(List<Integer> iSelectedCards) {
@@ -78,8 +96,14 @@ public class GameImplementation implements GameInterface {
                 if ((table.get(iSelectedCards.get(0)).getPoint() + table.get(iSelectedCards.get(1)).getPoint()) == 11) {
                     table.remove(iSelectedCards.get(0));
                     table.remove(iSelectedCards.get(1));
-                    table.add(iSelectedCards.get(0), deck.get(Random(deck.size())));
-                    table.add(iSelectedCards.get(1), deck.get(Random(deck.size())));
+                    
+                    int n1 = Random(deck.size());
+                    table.add(iSelectedCards.get(0), deck.get(n1));
+                    deck.remove(n1);
+                    
+                    int n2 = Random(deck.size());
+                    table.add(iSelectedCards.get(1), deck.get(n2));
+                    deck.remove(n2);
                     return true;
                 }
                 break;
@@ -110,5 +134,5 @@ public class GameImplementation implements GameInterface {
         Random rnd = new Random();
         return rnd.nextInt(n);
     }
-
+    
 }

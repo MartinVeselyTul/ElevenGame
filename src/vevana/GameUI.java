@@ -16,23 +16,27 @@ public class GameUI {
         do {
             System.out.println("V balíčku je " + game.getDeckSize());
 
-            for (int i = 0; i < game.nCards() - 1; i++) {
+            for (int i = 0; i < game.nCards(); i++) {
                 System.out.println(game.getCardDescriptionAt(i) + " na indexu " + i);
             }
 
-            System.out.println("Vyberte karty");
-            System.out.println("Dvě se součtem 11, nebo tři s hodnotami karty J Q K");
+            System.out.println("Vyberte karty");            
+            System.out.println("Dvě se součtem 11, nebo tři s hodnotami karty J Q K");            
             List<Integer> cards = new ArrayList<>();
             int n;
             int i = 0;
 
-            while ((n = sc.nextInt()) >= 0 && i < 3) {
-                cards.add(n);
+            while ((n = sc.nextInt()) >= 0 && i < 3) {               
+                cards.add(n);                
                 i++;
             }
-            System.out.println(game.playAndReplace(cards));
-            System.out.println(cards.toString());
             
-        } while (game.anotherPlayIsPossible() && !game.isWon());
+            //1. ziskat points u vybranych karet
+            //2. predelat kontrolu 11 a 0
+            //3. zjistit, kdyz je soucet 0, zda jsou 3 karty
+            //4. 
+     
+        } while (game.anotherPlayIsPossible() );
+        //&& !game.isWon()
     }
 }
