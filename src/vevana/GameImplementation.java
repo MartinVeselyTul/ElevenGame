@@ -74,8 +74,7 @@ public class GameImplementation implements GameInterface {
             }
             for (int i = 0; i < n; i++) {
                 for (int j = n-1; j >= 0; j--) {
-                    if(table.get(i).getPoint() + table.get(j).getPoint() == 11){
-                        System.out.println("soucet 11 true");
+                    if(table.get(i).getPoint() + table.get(j).getPoint() == 11){                        
                         return true;
                     }
                 }
@@ -94,27 +93,39 @@ public class GameImplementation implements GameInterface {
         switch (iSelectedCards.size()) {
             case 2:
                 if ((table.get(iSelectedCards.get(0)).getPoint() + table.get(iSelectedCards.get(1)).getPoint()) == 11) {
-                    table.remove(iSelectedCards.get(0));
-                    table.remove(iSelectedCards.get(1));
+                      int num1 = iSelectedCards.get(0);
+                      int num2 = iSelectedCards.get(1);
+                      
+                      table.remove(num1);
+                      int n1 = Random(deck.size());
+                      table.add(num1 ,deck.remove(n1));
+                      
+                      table.remove(num2);
+                      int n2 = Random(deck.size());
+                      table.add(num2 ,deck.remove(n2));
                     
-                    int n1 = Random(deck.size());
-                    table.add(iSelectedCards.get(0), deck.get(n1));
-                    deck.remove(n1);
-                    
-                    int n2 = Random(deck.size());
-                    table.add(iSelectedCards.get(1), deck.get(n2));
-                    deck.remove(n2);
                     return true;
                 }
                 break;
-            case 3:
-                String[] sim = new String[3];
-                for (int i = 0; i <= 2; i++) {
-                    sim[i] = table.get(i).getValue();
+            case 3: 
+                System.out.println("Case3");
+                String[] choosenCards = new String[3];
+                for (int i = 0; i < 3; i++) {
+                    int n = iSelectedCards.get(i);
+                    choosenCards[i] = table.get(n).getValue();
                 }
-                if (sim.equals(DataStore.getTriple())) {
+                List<String> myCards = new ArrayList<>();
+                Collections.addAll(myCards, choosenCards);
+                List<String> store = new ArrayList<>();               
+                Collections.addAll(store, DataStore.getTriple());
+                
+                if (store.containsAll(myCards)) {                    
                     for (int i = 0; i <= 2; i++) {
-                        table.remove(iSelectedCards.get(i));
+                        System.out.println("Proslo JQK");
+                        int n = iSelectedCards.get(i);
+                        table.remove(n);
+                        int nRand = Random(deck.size());
+                        table.add(n ,deck.remove(nRand));                        
                     }
                     return true;
                 }
@@ -134,5 +145,4 @@ public class GameImplementation implements GameInterface {
         Random rnd = new Random();
         return rnd.nextInt(n);
     }
-    
 }

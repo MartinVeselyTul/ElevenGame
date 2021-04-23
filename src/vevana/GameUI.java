@@ -30,13 +30,11 @@ public class GameUI {
                 cards.add(n);                
                 i++;
             }
-            
-            //1. ziskat points u vybranych karet
-            //2. predelat kontrolu 11 a 0
-            //3. zjistit, kdyz je soucet 0, zda jsou 3 karty
-            //4. 
-     
-        } while (game.anotherPlayIsPossible() );
-        //&& !game.isWon()
+            System.out.println(cards.toString());
+            game.playAndReplace(cards);
+//            if(game.playAndReplace(cards) == false){
+//                System.out.println("Nauc se pocitat...");
+//            }
+        } while (game.anotherPlayIsPossible() && !game.isWon());
     }
 }
