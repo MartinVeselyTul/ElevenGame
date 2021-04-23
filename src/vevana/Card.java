@@ -1,9 +1,10 @@
 package vevana;
 
 public class Card {
-    private String value;
-    private String symbol;
-    private int point;
+
+    private final String value;
+    private final String symbol;
+    private final int point;
 
     public Card(String value, String symbol, int point) {
         this.value = value;
@@ -25,8 +26,18 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" + "value=" + value + ", symbol=" + symbol + ", point=" + point + '}';
+        //♦ ♥ ♠ ♣
+        return ("jack".equals(value) ? "J"
+                : "queen".equals(value) ? "Q"
+                : "king".equals(value) ? "K"
+                : "ace".equals(value) ? "A"
+                : value)
+                + (("hearts".equals(symbol)) ? "♥ "
+                : ("clubs".equals(symbol)) ? "♣ "
+                : ("diamonds".equals(symbol)) ? "♦ "
+                : ("spades".equals(symbol)) ? "♠ "
+                : " ◙ ")
+                + " body: " + point;
     }
-    
-    
+
 }
