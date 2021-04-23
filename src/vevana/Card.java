@@ -1,6 +1,7 @@
 package vevana;
 
 public class Card {
+
     private String value;
     private String symbol;
     private int point;
@@ -25,8 +26,13 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" + "value=" + value + ", symbol=" + symbol + ", point=" + point + '}';
+        //♦ ♥ ♠ ♣
+        return (("hearts".equals(symbol)) ? " ♥ "
+                : ("clubs".equals(symbol)) ? " ♣ "
+                : ("diamonds".equals(symbol)) ? " ♦ "
+                : ("spades".equals(symbol)) ? " ♠ "
+                : " ◙ ")
+                + " hodnota: " + value + " body: " + point;
     }
-    
-    
+
 }
