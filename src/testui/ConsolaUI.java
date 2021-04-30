@@ -1,5 +1,6 @@
 package testui;
 
+//koment user2
 //komentar user1
 import elevengame.GameInterface;
 import java.util.ArrayList;
