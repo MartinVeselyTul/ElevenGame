@@ -31,7 +31,7 @@ public interface GameInterface {
     /**
      * Text representation of the card to be displayed
      * @param index of the card on the table
-     * @return symbol and value of the card as one String e.g. "srdce-7" or 
+     * @return symbol and value of the card as one String e.g. "symbol-value" or 
      * or empty String if there is no card at that index 
      */
     public String getCardDescriptionAt(int index); 

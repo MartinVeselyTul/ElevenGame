@@ -39,5 +39,4 @@ public class Card {
                 : " ◙ ")
                 + " body: " + point;
     }
-
 }

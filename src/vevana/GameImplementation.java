@@ -25,7 +25,7 @@ public class GameImplementation implements GameInterface {
             }
         }
         Collections.shuffle(deck);
-        for (int i = 0; i < nCards(); i++) {
+        for (int i = 0; i < nCards() - 1; i++) {
             table.add(deck.remove(i));
         }
     }
@@ -56,7 +56,7 @@ public class GameImplementation implements GameInterface {
             int triplet = 0;
             double sum = 0;
             int n = table.size();
-            
+
             for (int i = 0; i < n; i++) {
                 if (table.get(i).getPoint() == 0) {
                     triplet++;
@@ -85,8 +85,7 @@ public class GameImplementation implements GameInterface {
         }
         return false;
     }
-
-
+      
     @Override
     public boolean playAndReplace(List<Integer> iSelectedCards) {
         switch (iSelectedCards.size()) {
